@@ -15,3 +15,5 @@ echo "installing node";
 # Change to what ever version you want here see link to versions below
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -;
 sudo apt-get install -y nodejs;
+
+node app;
