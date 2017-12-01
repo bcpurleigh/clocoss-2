@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express.Router();
-module.exports = api;
+module.exports = app;
 
 const db = require(`./db-datastore`);
 
@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
   res.sendStatus(204);
 });
 
-app.get('/api/:id(\\w+)', async (req, res) => {
+app.get('/:id(\\w+)', async (req, res) => {
   try {
     res.send(await db.get(req.params.id));
   } catch (e) {
@@ -19,7 +19,7 @@ app.get('/api/:id(\\w+)', async (req, res) => {
 });
 
 
-app.post('/api/:id(\\w+)', bodyParser.text(), async (req, res) => {
+app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     await db.post(req.params.id, req.body);
     res.sendStatus(204);
@@ -29,7 +29,7 @@ app.post('/api/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
-app.put('/api/:id(\\w+)', bodyParser.text(), async (req, res) => {
+app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
     await db.put(req.params.id, req.body);
     res.sendStatus(204);
@@ -39,9 +39,9 @@ app.put('/api/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
-app.delete('/api/:id(\\w+)', async (req, res) => {
+app.delete('/:id(\\w+)', async (req) => {
   try {
-    await db.delete(req.params.id, req.body);
+    await db.delete(req.params.id);
     res.sendStatus(204);
   } catch (e) {
     console.error(e);

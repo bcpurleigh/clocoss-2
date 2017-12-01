@@ -32,8 +32,6 @@ module.exports.put = async (id, val) => {
 
 module.exports.delete = async(id) => {
   const [data] = await ds.delete(key(id));
-
-
   if(data.indexUpdates > 0) return 'ok';
   return '0';
 }
