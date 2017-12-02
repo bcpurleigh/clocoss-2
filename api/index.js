@@ -39,7 +39,7 @@ app.put('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   }
 });
 
-app.delete('/:id(\\w+)', async (req) => {
+app.delete('/:id(\\w+)', async (req, res) => {
   try {
     await db.delete(req.params.id);
     res.sendStatus(204);

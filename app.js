@@ -2,11 +2,7 @@ const express = require('express');
 
 const app = express();
 
-app.use((req, res, next) => {
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  next();
-});
+app.use(express.static('static', { extensions: ['html'] }));
 
 app.use('/api', require('./api'));
 
