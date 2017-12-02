@@ -6,7 +6,7 @@ module.exports = app;
 const db = require(`./db-datastore`);
 
 app.get('/', function(req, res) {
-  res.sendStatus(204);
+  res.sendStatus(200);
 });
 
 app.get('/:id(\\w+)', async (req, res) => {
@@ -21,8 +21,7 @@ app.get('/:id(\\w+)', async (req, res) => {
 
 app.post('/:id(\\w+)', bodyParser.text(), async (req, res) => {
   try {
-    await db.post(req.params.id, req.body);
-    res.sendStatus(204);
+    res.send(await db.post(req.params.id, req.body));
   } catch (e) {
     console.error(e);
     res.sendStatus(500);

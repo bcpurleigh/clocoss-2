@@ -14,11 +14,16 @@ module.exports.get = async (id) => {
 };
 
 module.exports.post = async (id, val) => {
-  const entity = {
-    key: key(id),
-    data: { name: id, val },
-  }
-  await ds.save(entity);
+    const [data] = await ds.get(key(id));
+    if (data && data.val) {
+        val = parseInt(val) + parseInt(data.val);
+    }
+      const entity = {
+        key: key(id),
+        data: { name: id, val },
+      }
+      await ds.save(entity);
+      return `${val}`;
 };
 
 module.exports.put = async (id, val) => {
@@ -27,11 +32,13 @@ module.exports.put = async (id, val) => {
     data: { name: id, val },
   }
   await ds.save(entity);
+  return `${val}`;
 };
 
 
 module.exports.delete = async(id) => {
   const [data] = await ds.delete(key(id));
+
   if(data.indexUpdates > 0) return 'ok';
   return '0';
 }
