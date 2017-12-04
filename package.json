@@ -1,10 +1,10 @@
 {
   "name": "up730061-clocoss-task2",
   "version": "1.0.0",
-  "description": "The package for task2",
+  "description": "A server to implement and create a API server using Google App Engine to provide a simple storage solution for numeric values.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "keywords": [
     "Test",

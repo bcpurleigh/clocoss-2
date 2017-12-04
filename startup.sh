@@ -3,17 +3,13 @@ echo "Script Started!";
 
 sudo apt-get -y update;
 
-echo "i figured out how to run two lines!";
-
 #install git
-sudo apt-get install git;
+sudo apt-get -y install git;
 
-echo "git installed";
+echo "Git installed";
 
-echo "installing node";
+echo "Installing Node";
 
 # Change to what ever version you want here see link to versions below
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -;
 sudo apt-get install -y nodejs;
-
-node app;
